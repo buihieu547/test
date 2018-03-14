@@ -1,0 +1,198 @@
+Use strict!
+
+Xét tính hỗ trợ của trình duyệt, việc thêm lệnh “Use strict” thuộc ECMAScript 5 và được Safari 5.1+, Chrome 13+ và IE10 hỗ trợ. Khi thêm “Use strict”, trình duyệt có thể khắc phục một số lỗi coding như: tạo biến toàn cục (global variable); truy cập arguments.callee hay arguments.caller. Cách này giúp lập trình viên quản lý lỗi nhỏ/lớn dễ dàng hơn khi chương trình gặp trục trặc. “Use strict” có thể áp dụng với một phạm vi chức năng hoặc cả một file hoàn chỉnh.
+
+Ví dụ :
+- Sử dụng variable mà không khai báo là lỗi.
+    "use strict";
+    x = 3.14;               // This will cause an error
+- Xóa một variable (hoặc object, function) là lỗi.
+    "use strict";
+    var x = 3.14;
+    delete x;               // This will cause an error
+- Trùng parameter name là lỗi.
+    "use strict";
+    function x(p1, p1) {};   // This will cause an error
+- Octal literals là lỗi.
+    "use strict";
+    var x = 010;           // This will cause an error
+- Reserved Words không được sử dụng như là tên biến như private, public, static, arguments
+
+
+
+Cái nên đọc
+Hoisting là hành vi mặc định của Javascript khi di chuyển những khai báo lên đầu.
+Trước ES6 var là keyword duy nhất để khai báo variable trong Javascript, nó không phân loại khi khai báo.
+Với ES6 Javascript đã giới thiệu hai loại keyword khác cho khai báo là let và const. 
+
+- const : phải gán giá trị khi khởi tạo, không thể gán giá trị tới nó sau khi khai báo nhưng có thể thay đổi properties của nó, không thể khai báo cùng tên khi nó đá được khai báo trước đó, không hoist.
+- let: không hoist. Chỉ sử dụng trong block. trong loop let có thể re-bind mỗi vòng lặp.  Ở global let không tạo ra thuộc tính mới.
+- var: var hoist. Có thể sử dụng ngoài block. Ở global var tạo ra thuộc tính mới cho object this.
+
+
+https://www.w3schools.com/js/js_variables.asp
+https://www.w3schools.com/js/js_best_practices.asp
+
+regular comparison là ==, strict comparison là ===;
+Luôn nhớ, hãy dùng regular comparison thay cho strict comparison
+
+Trong JavaScript, ta có thể dùng hai loại toán tử so sánh bằng: regular comparison và strict comparison. Chúng tôi khuyên bạn chỉ nên dùng strict comparison. Vì regular comparison sẽ cố ép giá trị khi thực thi chuyển đổi kiểu tự động. Mặt khác toán tử strict comparison sẽ không chuyển đổi mà sẽ cân bằng giá trị và kiểu của toán hạng, nhanh hơn nhiều so với regular comparison.
+
+
+
+The JavaScript call() Method
+
+call() method là một function Javascript được xác định trước, dùng để thực thi một hàm nào đó với các tham số truyền vào (nếu có).
+    "use strict";
+    function a() {
+        return this;
+    }
+    console.log(a.call({a: 1, b: 2}));
+Hàm apply có công dụng giống như hàm call, tuy nhiên về cú pháp thì có một chút khác biệt như sau:
+- Tham số đầu tiên của hàm call() là đối tượng this, tiếp theo chính là các tham số của hàm cần gọi.
+- Tham số đầu tiên của hàm apply() là đối tượng this, tham số tiếp theo là một mảng chứa các tham số của hàm cần gọi.
+
+to know more information: https://freetuts.net/hieu-hon-ve-ham-call-va-apply-trong-javascript-786.html
+
+
+
+Array.prototype.filter()
+Hàm fillter() tạo ra một array mới với toàn bộ element đã qua test. Với filter(), ta cần đảm bảo câu lệnh return trả về true hoặc false vì nó là điều kiện để "lọc" ra các giá trị phù hợp trong mảng.
+- Nhận vào 3 tham số (theo thứ tự):
+    + Phần tử hiện tại của mảng.
+    + Chỉ số của phần tử hiện tại trong mảng.
+    + Mảng ban đầu.
+
+
+
+Array.prototype.map()
+Hàm map() tạo ra một array mới với toàn bộ element đã qua chỉnh sửa, với map đó là luôn sử dụng return để trả về từng giá trị sau chỉnh sửa, nếu không mảng trả về cuối cùng sẽ chỉ chứa các giá trị undefined.
+- 1 số ưu điểm khi dùng map() thay vì for-loop:
+    + Với map(), ta không cần quản lý trạng thái của vòng lặp như với for-loop.
+    + Ta không cần sử dụng chỉ số để truy cập vào đúng phần tử trong mảng.
+    + Ta không cần tạo mảng mới và push() từng giá trị vào. map() trả về 1 mảng mới với các giá trị đã được chỉnh sửa, do đó có thể dễ dàng gán nó cho 1 biến khác.
+
+
+
+Array.prototype.reduce()
+Hàm reduce sẽ biến đổi một mảng thành một giá trị đơn giản, sẽ thực hiện một hàm được cung cấp cho mỗi giá trị của mảng, từ trái qua phải, sẽ trả về một kết quả được lưu trữ( tổng số hoặc kết quả tính toàn), sẽ không thực hiện hàm được cung cấp đối với các phần tử không có giá trị.
+Tham số đầu tiên là giá trị khởi tạo. Ta cần set giá trị khởi tạo ở cuối hàm. Trong ví dụ trên là 0. Nó có thể là bất cứ giá trị nào.
+Tham số thứ 2 là phần tử hiện tại trong mảng.
+Tham số thứ 3 là chỉ số của phần tử hiện tại trong mảng.
+Tham số thứ 4 là mảng ban đầu.
+
+
+
+Loadash https://kipalog.com/posts/Tang-suc-manh-cho-javascript-voi-lodash
+
+
+
+SCOPE
+Trong javascript scope đề cập đến ngữ cảnh hiện tại trong code của bạn. Scope được xác định trên globally hoặc locally.
+
+function scope (Nó chính là mọi thứ nằm trong dấu {} của function), local scope (định nghĩa một function và tạo các biến bên trong nó, các biến đấy trở thành local scope), block scope (Nó chính là mọi thứ nằm trong dấu {} của statements).
+
+Lexical Scope: Khi bạn nhìn thấy một function bên trong một function khác, function bên trong có thể truy cập đến scope của function bên ngoài, đó gọi là Lexical Scope hay là Closure – còn được gọi là Static Scope.
+
+
+DATE
+Định dạng ISO : Định dạng chuẩn của ISO 8601 là (YYYY-MM-DD) hoặc (YYYY-MM) hoặc (YYYY), Có một lưu ý nếu truyền vào không đủ (ngày - tháng - năm - giờ - phút - giây) thì mặc định các tham số khác sẽ lấy thời gian nhỏ nhất.
+
+Định dạng Long : tức là truyền vào với tên của tháng là ba chữ cái đầu tiên ghi bằng tiếng Anh, lúc này có thể đặt vị trí của nó thế nào cũng được vì đối tượng Date tự nhận diện và chuyển đổi.
+
+Định dạng Short : được lưu trữ dưới dạng MM/DD/YYYY hoặc YYYY/MM/DD hoặc MM-DD-YYYY hoặc YYYY-MM-DD
+
+Định dạng đầy đủ: thì truyền đẩy đủ (ngày - tháng - năm - giờ - phút - giây - timezone):
+
+
+
+DOM
+Document Object Model, dịch tạm ra là mô hình các đối tượng trong tài liệu HTML, trong mỗi thẻ HTML sẽ có những thuộc tính (Properties) và có phân cấp cha - con với các thẻ HTML khác. Sự phân cấp và các thuộc tính của thẻ HTML này ta gọi là selector và trong DOM sẽ có nhiệm vụ xử lý các vấn đề như đổi thuộc tính của thẻ, đổi cấu trúc HTML của thẻ, ...
+
+DOM document: có nhiệm vụ lưu trữ toàn bộ các thành phần trong tài liệu của website
+DOM element: có nhiệm vụ truy xuất tới thẻ HTML nào đó thông qua các thuộc tính như tên class, id, name của thẻ HTML
+DOM HTML: có nhiệm vụ thay đổi giá trị nội dung và giá trị thuộc tính của các thẻ HTML
+DOM CSS: có nhiệm vụ thay đổi các định dạng CSS của thẻ HTML
+DOM Event: có nhiệm vụ gán các sự kiện như onclick(), onload() vào các thẻ HTML
+DOM Listener: có nhiệm vụ lắng nghe các sự kiện tác động lên thẻ HTML đó
+DOM Navigation dùng để quản lý, thao tác với các thẻ HTML, thể hiện mối quan hệ cha - con của các thẻ HTML
+DOM Node, Nodelist: có nhiệm vụ thao tác với HTML thông qua đối tượng (Object)
+
+
+
+BOM
+BOM là chữ viết tắt của Browser Object Model, hay còn gọi là các đối tượng liên quan đến trình duyệt browser. Mỗi browser sẽ có những đối tượng khác nhau nên nó không có một chuẩn chung nào cả, tuy nhiên để có tính thống nhất giữa các trình duyệt thì người ta quy ước ra các loại BOM sau:
+    window
+    screen
+    location
+    history
+    navigator
+    popup
+    timing
+    cookies
+
+
+
+HTML5 Local Storage
+Local Storage có công dụng tương tự như cookie, có nghĩa là nó sẽ lưu trữ thông tin trên browser mà người dùng đang truy cập. Điểm khác biệt lớn nhất giữa Cookie và Local Storage là Local Storage cho phép bạn lưu trữ thông tin tương đối lớn lên đến 5MB, ngoài ra local storage không gửi thông tin lên server như Cookie. Cả local storage và cookie đều không ảnh hưởng đến hiệu xuất của trang web.
+
+session Storage 
+Công dụng của sessionStorage cũng tương tự như localStorage, chỉ có một điểm khác đó là dữ liệu của sessionStorage sẽ mất khi bạn đóng trình duyệt. sessionStorage không tồn tại hai phương thức getItem và setItem mà bạn sẽ bổ sung key và value cho nó.
+
+
+
+Callback function
+Callback function có thể được hiểu nôm na là một function A được truyền vào một function B thông qua danh sách các tham số của B. Lúc này tại hàm B sẽ gọi đến hàm A để thực hiện một chức năng nào đó mà A đang nắm giữ
+
+setTimeout(function(){
+    // day la callback function
+}, 200);
+
+$('#test').click(function(){
+    // đây là callback function
+});
+
+function createPassword(callback) {
+    return callback('freetuts.net');
+}
+ 
+// Sử dụng
+var password = createPassword(function (secret_key) {
+    return secret_key;
+});
+
+
+
+**FUNCTION DECLARATION**
+function doSomething(){
+  // ...do something...
+};
+**FUNCTION EXPRESSION**
+var doSomething = function(){
+  // ...do something...
+};
+
+
+
+Immediately-Invoked Function Expression (ɪˈmiː.di.ət.li ɪnˈvəʊk fʌŋk.ʃən ɪkˈspreʃ.ən)
+Tạo một function expression và thực thi nó ngay lập tức.
+Tại sao xài nó: Tạo một name function sẽ ô nhiêm global và vô tình có thể bị gọi lại. IIFE không có tên và không thể bị gọi lại sau đó.
+
+
+
+
+PROMISE
+Một object Promise đại diện cho một giá trị ở thời điểm hiện tại có thể chưa tồn tại, nhưng sẽ được xử lý và có giá trị vào một thời gian nào đó trong tương lai. Việc này sẽ giúp bạn viết các dòng code xử lý không đồng bộ trông có vẻ đồng bộ hơn. Lấy ví dụ, nếu bạn sử dụng Promise cho việc gọi API để lấy dữ liệu, bạn sẽ tạo ra một đối tượng Promise đại diện cho data lấy được từ API. Điều cốt lõi ở đây là dữ liệu sẽ chưa tồn tại ở thời điểm đối tượng Promise được tạo ra, mà chỉ có thể truy cập sau khi có response từ web service. Trong thời gian chờ lấy dữ liệu, Promise object sẽ đóng vai trò như một proxy cho dữ liệu. Hơn nữa, bạn có thể đính các callback vào Promise object để thực hiện việc xử lý dữ liệu. Các callback này sẽ chỉ thực hiện khi dữ liệu đã sẵn sàng.
+
+var promise = new Promise(function(resolve, reject) {
+    //call ajax trong đây nếu success thì run
+    resolve('success');
+    //nếu thất bại thì run
+    reject('error');
+});
+promise.then(function(data) { console.log(data); }, function(err) { console.log(err) });
+
+
+
+FOREACH
+forEach mới xuất hiện trong những phiên bản Javascript gần đây cho các trình duyệt hiện đại, giúp tạo vòng lặp với mảng nhanh hơn.
