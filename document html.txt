@@ -1,0 +1,99 @@
+HTML – Nó là ngôn ngữ của wwww. Nó là văn bản tiêu chuẩn để định dạng ngôn ngữ cái dùng để tạo và hiển thị trang web.
+CSS – Định dạng các siêu văn bản dạng thô tạo ra từ HTML thành một bố cục website, có màu sắc, ảnh nền,….
+
+
+HTML5
+New HTML5 Elements
+    Semantic elements mới như <header>, <footer>, <article>, và <section>.
+    Attribute mới của form element như number, date, time, calendar và range
+    graphic elements mới như <svg> và <canvas>
+    elements multimedia mới như <audio> và <video>
+New HTML5 API
+    HTML Geolocation
+    HTML Drag and Drop
+    HTML Local Storage
+    HTML Application Cache
+    HTML Web Workers
+    HTML SSE
+Xòa vài element được sử dụng ở html4 như : <dir> <big> <font> ...
+
+
+
+<!DOCTYPE> phải là thứ đầu tiên khai báo trong HTML
+<!DOCTYPE> không phải html tag, nó cho browser biết version của HTML
+Nếu không đặt <!DOCTYPE html> trong HML5, browser sẽ không có thể nhận định đúng version và có thể sử dụng version HTML cũ hơn và gây ra vài thẻ mới trong HTML5 không được hỗ trợ như <header>, <footer>...
+
+
+
+CSS3
+    CSS Animations và Transitions: hiệu ứng chuyển động cho từng đối tượng.
+
+    Thuộc tính content và counter: before, after, hữu ích trong trường hợp bạn cần thêm bóng hộp hoặc các yếu tố thị giác khác mà không cần add thêm thẻ.
+
+    Selectors nâng cao: có thể chọn thêm attribute để style.
+
+    Gradients: chuyển đổi trơn tru giữa các màu sắc mà không cần phải dùng đến hình ảnh.
+
+    Border Images: cho phép border bên ngoài image.
+
+
+
+BOOTSTRAP là Grid system, là một framework cho phép thiết kế website reponsive nhanh hơn và dễ dàng hơn.
+    xs (0 - 767) 
+    sm (768 - 992)
+    md (992 - 1200)
+    lg (1200 - vô cùng)
+
+move cloumn sử dụng offset
+http://getbootstrap.com/docs/3.3/ vô đây tham khảo hen
+Tại sao sử dụng bootstrap: Tính năng Responsive, rất dễ sử dụng, tương thích nhiều browser, nhất quán giao diện trên toàn bộ browser.
+
+
+
+LESS/SASS là một CSS preprocessor giúp ngắn gọn và đơn giản hóa các đoạn mã CSS
+
+LESS, SASS:
+    Variables
+
+    Nested Rules: có thể dùng ký tự '&' sẽ tham chiếu selector cha
+
+    Mixins
+
+    Operations
+
+    Functions
+
+    Scope: varible sẽ được tìm kiếm trong local scope, không thấy tiếp tục tìm kiếm ở parent scope cứ thế.
+
+    Importing: import nhiều file và có thể sử dụng các variable trong đó.
+
+LESS vs SASS:
+    SASS là trong Ruby còn less là trong javascript.
+
+    Variables :  LESS sử dụng ký tự '@' viết đầu, Sass sử dụng ký tự '$',
+
+    Mixin: SASS @mixin để khai báo và @include để gọi, LESS khai báo giống style một class, id và gọi bằng cách ghi tên class hoặc id đó ra và trước chúng có kí hiệu chứng minh chúng là class hoặc id như dấu.
+
+    Document của less dễ đọc hơn của sass
+
+
+
+JADE hay PUG là 1 template engine.
+    Giản lược cách viết các thẻ HTML, không sợ mở thẻ ở chỗ này mà quên đóng thẻ ở chỗ khác.
+
+    Có thể kế thừa và tái sử dụng (không phải copy/paste).
+
+    Vì mang tính kế thừa, nên sửa một chỗ, có thể cập nhật ở những chỗ khác mà không sợ thiếu sót.
+
+    Điều quan trong cuối cùng là nó thông minh hơn HTML.
+
+    Variables
+    Mixin 
+    Conditionals
+    Includes
+    Extends và block
+
+
+
+Jquery
+    
