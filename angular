@@ -1,0 +1,16 @@
+Advantages of AngularJS
+- Làm giảm số lượng code so với jquery và javascript.
+
+- Two-way data-binding : tự đồng bộ hóa của data giữa model và view.
+
+- Sử dụng mô hình MVC : vì được chia các thành phần riêng biệt nên hoạt động độc lập tách biệt giúp phát triển ứng dụng nhanh hơn, đơn giản hơn và dễ nâng cấp, bảo trì hơn.
+
+- Directives : giúp thao tác trên DOM đơn giản.
+
+- Dependency Injection: đợn giản để phát triển, hiểu và test.
+
+Disadvantages of AngularJS
+- Không an toàn vì nó là framework của javascript, user disable javascript nó không còn hoạt động.
+
+
+
