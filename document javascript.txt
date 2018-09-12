@@ -196,3 +196,5 @@ promise.then(function(data) { console.log(data); }, function(err) { console.log(
 
 FOREACH
 forEach mới xuất hiện trong những phiên bản Javascript gần đây cho các trình duyệt hiện đại, giúp tạo vòng lặp với mảng nhanh hơn.
+
+Research concept middleware
