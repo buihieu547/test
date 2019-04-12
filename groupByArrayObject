@@ -1,0 +1,61 @@
+let a = [
+    {
+        amount: 10,
+        currency: 'EUR'
+    },
+    {
+        amount: 25,
+        currency: 'EUR'
+    },
+    {
+        amount: 66,
+        currency: 'EUR'
+    },
+    {
+        amount: 30,
+        currency: 'AZN'
+    },
+    {
+        amount: 20,
+        currency: 'AZN'
+    },
+    {
+        amount: 18,
+        currency: 'AZN'
+    },
+    {
+        amount: 19,
+        currency: 'EUR'
+    },
+    {
+        amount: 13,
+        currency: 'AZN'
+    },
+    {
+        amount: 23,
+        currency: 'USD'
+    }
+];
+
+function groupBy(array, f) {
+    const groups = {};
+    array.forEach(e => {
+        const group = JSON.stringify(f(e));
+        groups[group] = groups[group] || [];
+        groups[group].push(e);
+    });
+
+    return Object.keys(groups).map(e => {
+        return groups[e]; 
+    })
+}
+
+let result = groupBy(a, (item) => { return [item.currency]; });
+
+result.map(e => {
+    if (e.length) {
+        return e.reduce((a, b) => ({amount: a.amount + b.amount})).amount;
+    } else {
+        return e[0].amount;
+    }
+});
